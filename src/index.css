@@ -119,14 +119,14 @@ img {
   padding-bottom:  2rem;
 }
 
-.section_title {
+.section__title {
   font-size: var(--h1-font-size);
   margin-left: 0.875rem;
   position: relative;
   margin-bottom: 3.75rem;
 }
 
-.section_title::before{
+.section__title::before{
   content: '';
   background: url(../src/assets/dots-bg.svg);
   height: 2.25rem;

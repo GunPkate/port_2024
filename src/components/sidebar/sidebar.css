@@ -1,5 +1,5 @@
 .aside {
-    position: fix;
+    position: fixed;
     left: 0;
     top: 0;
     background: (--body-color);
@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 10;
+    background-color: antiquewhite;
 }
 
 .nav__list {
@@ -33,4 +34,29 @@
     font-size: var(--medium-font-size);
     transform: rotate(-180deg);
     writing-mode: vertical-rl;
+}
+
+@media screen and (max-width: 1024px){
+    .aside {
+        font-size: 2.5rem;
+        width: 100%;
+        min-height: 5vh;
+        max-height: 1%; 
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1.25rem;
+    }
+    
+    .copyright{
+        display: none;
+    }
+    
+    .nav, .nav__logo {
+        transform: translateY(-2.2rem);
+    }
 }

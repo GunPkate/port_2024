@@ -4,6 +4,12 @@ main {
   background-color: red; */
 }
 
+@media screen and (max-width: 1024px){
+  main {
+    margin-left: 0px;
+  }
+}
+
 /* .App {
   text-align: center;
 }
