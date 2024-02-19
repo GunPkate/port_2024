@@ -16,9 +16,9 @@ function App() {
         <About/>
         <Contact/>
         <Home/>
-        <Portfolio/>
         <Resume/>
         <Service/>
+        <Portfolio/>
       </main>
     </>
   );
