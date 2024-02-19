@@ -47,29 +47,30 @@ const Data = [
         category: "Art"
     },
     {
+        id: 10,
+        image: image10,
+        title: "Fullstack Outsource training",
+        category: "Certificates"
+    },
+    {
         id: 7,
         image: image7,
-        title: "Game Store",
+        title: "AWS Foundation",
         category: "Certificates"
     },
     {
         id: 8,
         image: image8,
-        title: "Game Store",
+        title: "Toeic 790",
         category: "Certificates"
     },
     {
         id: 9,
         image: image9,
-        title: "Game Store",
+        title: "AI on Cloud",
         category: "Certificates"
     },
-    {
-        id: 10,
-        image: image10,
-        title: "Game Store",
-        category: "Art"
-    },
+
 ]
 
 export default Data

@@ -5,10 +5,13 @@ import Data from "./Data"
 
 const Portfolio = () => {
     const [items,setItems] = useState(Data)
+    const [itemsNum,setItemsNum] = useState(Data.length)
+
     const filterItem = (category) =>{
         console.log(category)
         const filter = Data.filter(item=>item.category === category)
         category === "All"  ? setItems(Data) : setItems(filter);
+        category === "All"  ? setItemsNum(Data.length) : setItemsNum(filter.length);
     }
     let catList = (Data.map(data => data.category)
         .filter((value, index, self) => self.indexOf(value) === index)).sort()
@@ -16,7 +19,7 @@ const Portfolio = () => {
 
     return (<>
         <section className="work container section" id="portfolio">
-            <h2 className="section__title">Recent Work</h2>
+            <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
             <div className="work__filters">
                 <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
                 {catList.map(item=>

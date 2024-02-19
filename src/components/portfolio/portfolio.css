@@ -1,3 +1,10 @@
+.section__title span {
+    color: var(--first-color);
+    border-radius: 40%;
+    transition: 1s;
+    align-items: center;
+}
+
 .work__filters {
     display: flex;
     align-items: center;
