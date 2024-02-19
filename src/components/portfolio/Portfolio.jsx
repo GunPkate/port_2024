@@ -8,14 +8,17 @@ const Portfolio = () => {
     const filterItem = (category) =>{
         console.log(category)
         const filter = Data.filter(item=>item.category === category)
-        category === catList[0]  ? setItems(Data) : setItems(filter);
+        category === "All"  ? setItems(Data) : setItems(filter);
     }
-    const catList = ["All", "Art", "Creative", "Design"]
+    let catList = (Data.map(data => data.category)
+        .filter((value, index, self) => self.indexOf(value) === index)).sort()
+        
 
     return (<>
         <section className="work container section" id="portfolio">
             <h2 className="section__title">Recent Work</h2>
             <div className="work__filters">
+                <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
                 {catList.map(item=>
                     <span className="work__item" onClick={(e)=>filterItem(item)} value={item}>{item}</span>
                 )}

@@ -1,5 +1,4 @@
 import './App.css';
-import About from './components/about/About';
 import Contact from './components/contact/Contact';
 import Home from './components/home/Home';
 import Portfolio from './components/portfolio/Portfolio';
@@ -13,12 +12,11 @@ function App() {
     <>
       <Sidebar/>
       <main className="main">
-        <About/>
-        <Contact/>
         <Home/>
         <Resume/>
         <Service/>
         <Portfolio/>
+        <Contact/>
       </main>
     </>
   );
