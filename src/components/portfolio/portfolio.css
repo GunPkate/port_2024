@@ -34,10 +34,11 @@
     height: 100%;
     width: 100%;
     transition: .3s;
+    opacity: 0;
 }
 
 .work__mask:hover {
-    opacity: 0;
+    opacity: 0.8;
 }
 
 .work__category {

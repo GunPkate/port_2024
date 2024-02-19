@@ -5,15 +5,21 @@ import Data from "./Data"
 
 const Portfolio = () => {
     const [items,setItems] = useState(Data)
+    const filterItem = (category) =>{
+        console.log(category)
+        const filter = Data.filter(item=>item.category === category)
+        category === catList[0]  ? setItems(Data) : setItems(filter);
+    }
+    const catList = ["All", "Art", "Creative", "Design"]
 
     return (<>
         <section className="work container section" id="portfolio">
             <h2 className="section__title">Recent Work</h2>
             <div className="work__filters">
-                <span className="work__item">All</span>
-                <span className="work__item">Art</span>
-                <span className="work__item">Creative</span>
-                <span className="work__item">Design</span>
+                {catList.map(item=>
+                    <span className="work__item" onClick={(e)=>filterItem(item)} value={item}>{item}</span>
+                )}
+                
             </div>
 
             <div className="work__container grid">
