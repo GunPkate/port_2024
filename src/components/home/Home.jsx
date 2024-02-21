@@ -6,12 +6,13 @@ import ScrollDown from "./ScrollDown.jsx"
 
 
 const Home = () => {
+    const data = "Software Developer <br> 1 year and 8 months"
     return (<>
         <section className="home container" id="home">
             <div className="intro">
                 <img src={Me} alt="" className="home__img" />
                 <h1 className="home__name">Gun P</h1>
-                <span className="home__education">Software Developer</span>
+                <p className="home__name" dangerouslySetInnerHTML={{__html: data}}></p>
                 
                 <HeaderSocials/>
                 <a href="#contact" className="btn" id="">Hire Me</a>
