@@ -1,4 +1,5 @@
 import './App.css';
+import Certificates from './components/certificates/Certificates';
 import Contact from './components/contact/Contact';
 import Home from './components/home/Home';
 import Portfolio from './components/portfolio/Portfolio';
@@ -16,6 +17,7 @@ function App() {
         <Resume/>
         <Service/>
         <Portfolio/>
+        <Certificates/>
         <Contact/>
       </main>
     </>

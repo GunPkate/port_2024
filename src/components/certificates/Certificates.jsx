@@ -1,9 +1,9 @@
 
 import React, {useState} from "react"
-import "./portfolio.css"
+import "./certificates.css"
 import Data from "./Data"
 
-const Portfolio = () => {
+const Certificates = () => {
 
         
     const ShowPort = ({filterValue}) => {
@@ -12,6 +12,7 @@ const Portfolio = () => {
         let catList = (Data.map(data => data.category)
             .filter((value, index, self) => self.indexOf(value) === index)).sort()
         let sectionPort = catList;
+
         ///// Filter Projects /////
 
         const [items,setItems] = useState(Data)
@@ -31,13 +32,13 @@ const Portfolio = () => {
 
         return (<>
         <section className="work container section" id="portfolio">
-            <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
+            <h2 className="section__title">Recent Certificates <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
             <div className="work__filters">
                 <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
                 {
                 
                 sectionPort.map(item=>
-                        <span className="work__item" onClick={(e)=>filterItem(item)} value={item}>{item}</span>
+                        <span className="work__item" id={item} onClick={(e)=>filterItem(item)} value={item}>{item}</span>
                 )}
                 
             </div>
@@ -69,4 +70,4 @@ const Portfolio = () => {
     </>)
 }
 
-export default Portfolio
+export default Certificates
