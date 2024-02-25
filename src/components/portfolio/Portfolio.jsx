@@ -4,44 +4,64 @@ import "./portfolio.css"
 import Data from "./Data"
 
 const Portfolio = () => {
+    return (<>
+        <ShowPort filterValue={""}/>
+    </>)
+}
 
+const ShowPort = ({filterValue}) => {
+
+    ///// Filter Projects /////
+    let catList = (Data.map(data => data.category)
+        .filter((value, index, self) => self.indexOf(value) === index)).sort()
+    let sectionPort = catList;
+    ///// Filter Projects /////
+
+    const [items,setItems] = useState(Data)
+    const [pages,setPages] = useState( Math.ceil((Data.length/3*10)/10)  )
+    const [itemsNum,setItemsNum] = useState(Data.length)
+    const [showDesc,setShowDesc] = useState(false)
+
+    const filterItem = (category,page) =>{
+        // console.log(category)
+        // console.log(Data)
+
+        let filter = []
+        category === "All"  ? filter = Data : filter = Data.filter(item=>item.category === category)
+        setItems(filter);
+        setItemsNum(filter.length);
+        let num = Math.ceil((filter.length/3*10)/10);
         
-    const ShowPort = ({filterValue}) => {
+        console.log("temp",num)
+        setPages(num)
+        console.log("set",pages)
+    }
 
-        ///// Filter Projects /////
-        let catList = (Data.map(data => data.category)
-            .filter((value, index, self) => self.indexOf(value) === index)).sort()
-        let sectionPort = catList;
-        ///// Filter Projects /////
+    const toggleDesc = (toggle) => {
+        setShowDesc(!toggle)
+        console.log(toggle)
+    }
 
-        const [items,setItems] = useState(Data)
-        const [itemsNum,setItemsNum] = useState(Data.length)
-    
-        const filterItem = (category) =>{
-            console.log(category)
-            console.log(Data)
+    return (<>
+    <section className="work container section" id="portfolio">
+        <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
+        <div className="work__filters">
+            <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
+            {
+            
+            sectionPort.map(item=>
+                    <span className="work__item" onClick={(e)=>filterItem(item)} value={item}>{item}</span>
+            )}
+            
+        </div>
 
-            const filter = Data.filter(item=>item.category === category)
-
-            category === "All"  ? setItems(Data) : setItems(filter);
-            category === "All"  ? setItemsNum(Data.length) : setItemsNum(filter.length);
-        }
-
-
-
-        return (<>
-        <section className="work container section" id="portfolio">
-            <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
-            <div className="work__filters">
-                <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
-                {
+        <div className="description">
+            { showDesc?     
+            <div className = {`${showDesc ?"show-desc":"close-desc"}`} >
                 
-                sectionPort.map(item=>
-                        <span className="work__item" onClick={(e)=>filterItem(item)} value={item}>{item}</span>
-                )}
-                
-            </div>
-
+            </div> :<></>
+            }
+              
             <div className="work__container grid">
                 {items.map((value) => {
                     const {id,image,title,category} = value;
@@ -49,7 +69,7 @@ const Portfolio = () => {
                         <div className="work__card" key={id}>
                             <div className="work__thumbnail">
                                 <img src={image} alt="" className="work__img" />
-                                <div className="work__mask"></div>
+                                <div className="work__mask" onClick={(e)=>toggleDesc(showDesc)}></div>
                             </div>
 
                             <span className="work__category">{category}</span>
@@ -59,14 +79,56 @@ const Portfolio = () => {
                             </a>
                         </div>
                         )
-                })}
+                    })}
             </div>
-        </section>
-    </>)}
+        </div>
 
-    return (<>
-        <ShowPort filterValue={""}/>
-    </>)
+        <PageTag page = {pages}/>
+    
+    </section>
+</>)}
+
+const PageTag = ({page}) =>{
+const [showPages,setShowPage] =  useState('')
+
+function createArray() {
+    let aa =""
+    for (let i = 1; i < page; i++) {
+        aa += `<a href="#">${i}</a>`
+    }
+    console.log(aa)
+    console.log(page)
+    // setShowPage(aa)
+}
+createArray();
+
+
+return (<>
+    <div className="pageSection">
+    <div className="pagination" dangerouslySetInnerHTML={{__html:showPages}}>
+        {/* <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+        {() =>{
+            return  <a href="#">&raquo;</a>
+        }} */}
+    </div>
+    </div>
+</>)
+}    
+
+const Description = () =>{
+return (
+
+    <div className="description">
+        
+    </div>
+)
 }
 
 export default Portfolio
