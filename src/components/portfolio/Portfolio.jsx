@@ -22,6 +22,7 @@ const ShowPort = ({filterValue}) => {
     const [itemsNum,setItemsNum] = useState(Data.length)
     const [showDesc,setShowDesc] = useState(false)
 
+
     const filterItem = (category,page) =>{
         // console.log(category)
         // console.log(Data)
@@ -37,9 +38,17 @@ const ShowPort = ({filterValue}) => {
         console.log("set",pages)
     }
 
-    const toggleDesc = (toggle) => {
-        setShowDesc(!toggle)
-        console.log(toggle)
+    const [valueDesc,setValueDesc] = useState([])
+
+    const toggleDesc = (toggle,uiDesc) => {
+        if(uiDesc[0] != valueDesc[0]){
+            setShowDesc(true)
+            setValueDesc(uiDesc)
+        }
+        else if(uiDesc[0] === valueDesc[0]){
+            setShowDesc(false)
+            setValueDesc([])
+        }
     }
 
     return (<>
@@ -56,11 +65,21 @@ const ShowPort = ({filterValue}) => {
         </div>
 
         <div className="description">
-            { showDesc?     
+
             <div className = {`${showDesc ?"show-desc":"close-desc"}`} >
-                
-            </div> :<></>
-            }
+                {valueDesc? 
+                valueDesc.map((item)=>
+                    <> 
+                        <div className="work__card__desc">
+                            <img src={item.image} alt="" className="work__img__desc" />
+                            <h3 className="work__title__desc">{item.title}</h3>
+                            <p className="work__title__desc2">{item.desc}</p>
+                        </div>
+
+                    </>
+                )  :<></>}
+            </div> 
+            
               
             <div className="work__container grid">
                 {items.map((value) => {
@@ -69,7 +88,7 @@ const ShowPort = ({filterValue}) => {
                         <div className="work__card" key={id}>
                             <div className="work__thumbnail">
                                 <img src={image} alt="" className="work__img" />
-                                <div className="work__mask" onClick={(e)=>toggleDesc(showDesc)}></div>
+                                <div className="work__mask" onClick={(e)=>toggleDesc(showDesc,[value])}></div>
                             </div>
 
                             <span className="work__category">{category}</span>

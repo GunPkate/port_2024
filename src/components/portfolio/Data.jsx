@@ -12,7 +12,8 @@ const Data = [
         image: image1,
         title: "C# Accounting",
         category: "Backend",
-        subgroup: ["C#","WPF","Dot net"]
+        subgroup: ["C#","WPF","Dot net"],
+        desc: "Apply C# WPF to make accounting system connecting to MS sql as Database"
     },
     {
         id: 2,
@@ -33,7 +34,8 @@ const Data = [
         image: image4,
         title: "Email Debt Noti",
         category: "Backend",
-        subgroup: ["Hapi","Postgres"]
+        subgroup: ["Hapi","Postgres"],
+        desc: "Use javascript and MySql as Backend. This require nodejs to apply Hapi and nodemailer to generate email"
     },
     {
         id: 5,
