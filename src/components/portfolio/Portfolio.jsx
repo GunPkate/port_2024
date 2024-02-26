@@ -66,28 +66,14 @@ const ShowPort = ({filterValue}) => {
 
         <div className="description">
 
-            <div className = {`${showDesc ?"show-desc":"close-desc"}`} >
-                {valueDesc? 
-                valueDesc.map((item)=>
-                    <> 
-                        <div className="work__card__desc">
-                            <img src={item.image} alt="" className="work__img__desc" />
-                            <h3 className="work__title__desc">{item.title}</h3>
-                            <p className="work__title__desc2">{item.desc}</p>
-                        </div>
-
-                    </>
-                )  :<></>}
-            </div> 
-            
-              
+            <Desc showDesc={showDesc} valueDesc={valueDesc}/>
             <div className="work__container grid">
                 {items.map((value) => {
                     const {id,image,title,category} = value;
                     return (
                         <div className="work__card" key={id}>
                             <div className="work__thumbnail">
-                                <img src={image} alt="" className="work__img" />
+                                <img src={image[0]} alt="" className="work__img" />
                                 <div className="work__mask" onClick={(e)=>toggleDesc(showDesc,[value])}></div>
                             </div>
 
@@ -107,6 +93,25 @@ const ShowPort = ({filterValue}) => {
     </section>
 </>)}
 
+const Desc = ({showDesc,valueDesc}) =>{
+    return (
+        <div className = {`${showDesc ?"show-desc":"close-desc"}`} >
+                {valueDesc? 
+                valueDesc.map((item)=>
+                    <> 
+                        <div className="work__card__desc">
+                            <img src={item.image[0]} alt="" className="work__img__desc" />
+                            <PageTag page={item.image}/>
+                            <h3 className="work__title__desc">{item.title}</h3>
+                            <p className="work__title__desc2">{item.desc}</p>
+                        </div>
+
+                    </>
+                )  :<></>}
+            </div> 
+    )
+}
+
 const PageTag = ({page}) =>{
 const [showPages,setShowPage] =  useState('')
 
@@ -116,7 +121,7 @@ function createArray() {
         aa += `<a href="#">${i}</a>`
     }
     console.log(aa)
-    console.log(page)
+    console.log("001",page)
     // setShowPage(aa)
 }
 createArray();

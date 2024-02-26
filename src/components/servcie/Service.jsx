@@ -8,20 +8,44 @@ const data = [
     {
         id: 1,
         image: image1,
-        title: "Fronte End",
-        description: "Angular V5 & V12"
+        title: "Front End",
+        description: 
+            ` 
+            <table>
+                <tr> <td> <i class="fa fa-java" aria-hidden="true">        </td>   <td> &nbsp Angular V5 & V12 </td>   </tr> </i>    
+                <tr> <td> <i class="fa fa-react" aria-hidden="true">       </td>   <td> &nbsp React </td> </tr> </i>   
+      
+            </table>
+            `
     },
     {
         id: 2,
         image: image2,
-        title: "Fronte End",
-        description: "Angular V5 & V12"
+        title: "Back End",
+        description: 
+            ` 
+            <table>
+                <tr> <td> <i class="fa fa-java" aria-hidden="true">         </td>   <td> &nbsp Java Springboot</td>   </tr> </i>    
+                <tr> <td> <i class="fa fa-nodejs" aria-hidden="true">       </td>   <td> &nbsp JS Express | Hapi</td> </tr> </i>   
+                <tr> <td> <i class="fa fa-csharp" aria-hidden="true">       </td>   <td> &nbsp C# WPF | Web API</td> </tr> </i>  
+                <tr> <td> <i class="fa fa-postgresql" aria-hidden="true">   </td>   <td> &nbsp Postgres | DBeaver</td>   </tr> </i>  
+                <tr> <td> <i class="fa fa-mysql" aria-hidden="true">        </td>   <td> &nbsp MySQL </td>   </tr> </i> 
+            </table>
+            `
+        
     },
     {
         id: 3,
         image: image3,
-        title: "Fronte End",
-        description: "Angular V5 & V12"
+        title: "Business Skill",
+        description: 
+            ` 
+            <table>
+                <tr> <td> <i class="fa fa-money" aria-hidden="true">        </td>   <td> &nbsp Accounting </td>   </tr> </i>    
+                <tr> <td> <i class="fa fa-suitcase" aria-hidden="true">       </td>   <td> &nbsp ERP </td> </tr> </i>   
+    
+            </table>
+            `
     }
 ]
 
@@ -34,8 +58,10 @@ const Service = () => {
                 <>
                     <div className="services__card" key={id}>
                         <img src={image} className="services__img" alt="" />
-                        <div className="services__title">{title}</div>
-                        <div className="services__description">{description}</div>
+                        <h1 style={{color: "white"}}>{title}</h1>
+                        <div className = "service__block">
+                            <div className="services__description" dangerouslySetInnerHTML={{__html: description}}>{}</div>
+                        </div>
                     </div>
                 </>
                 ) )  }
