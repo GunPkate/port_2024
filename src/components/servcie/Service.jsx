@@ -14,7 +14,7 @@ const data = [
             <table>
                 <tr> <td> <i class="fa fa-java" aria-hidden="true">        </td>   <td> &nbsp Angular V5 & V12 </td>   </tr> </i>    
                 <tr> <td> <i class="fa fa-react" aria-hidden="true">       </td>   <td> &nbsp React </td> </tr> </i>   
-      
+                <tr> <td> <i class="fa fa-nodejs" aria-hidden="true">       </td>   <td> &nbsp NodeJS 6.9 | 12.16 | 20.9</td> </tr> </i>       
             </table>
             `
     },

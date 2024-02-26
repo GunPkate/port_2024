@@ -1,5 +1,5 @@
 
-import React, {useState} from "react"
+import React, { useState} from "react"
 import "./portfolio.css"
 import Data from "./Data"
 
@@ -36,12 +36,13 @@ const ShowPort = ({filterValue}) => {
         console.log("temp",num)
         setPages(num)
         console.log("set",pages)
+        setShowDesc(false);
     }
 
     const [valueDesc,setValueDesc] = useState([])
 
     const toggleDesc = (toggle,uiDesc) => {
-        if(uiDesc[0] != valueDesc[0]){
+        if(uiDesc[0] !== valueDesc[0]){
             setShowDesc(true)
             setValueDesc(uiDesc)
         }
@@ -53,7 +54,7 @@ const ShowPort = ({filterValue}) => {
 
     return (<>
     <section className="work container section" id="portfolio">
-        <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span> </h2>   
+        <h2 className="section__title">Recent Work <span className="section__title"> &nbsp; {itemsNum}  </span>  &nbsp;  Click to View Details</h2>   
         <div className="work__filters">
             <span className="work__item" onClick={(e) => filterItem("All")}>All</span>
             {
@@ -79,7 +80,7 @@ const ShowPort = ({filterValue}) => {
 
                             <span className="work__category">{category}</span>
                             <h3 className="work__title">{title}</h3>
-                            <a href="#" className="work__button">
+                            <a className="work__button">
                                 <i className="icon-link work__button-icon"></i>
                             </a>
                         </div>
@@ -87,24 +88,38 @@ const ShowPort = ({filterValue}) => {
                     })}
             </div>
         </div>
-
-        <PageTag page = {pages}/>
     
     </section>
 </>)}
 
 const Desc = ({showDesc,valueDesc}) =>{
+    const [showImgDesc,setShowImgDesc] = useState([])
+
     return (
         <div className = {`${showDesc ?"show-desc":"close-desc"}`} >
                 {valueDesc? 
                 valueDesc.map((item)=>
                     <> 
-                        <div className="work__card__desc">
-                            <img src={item.image[0]} alt="" className="work__img__desc" />
-                            <PageTag page={item.image}/>
-                            <h3 className="work__title__desc">{item.title}</h3>
-                            <p className="work__title__desc2">{item.desc}</p>
+                        <div key={item.id} className="work__card__desc">
+                            <img src={showImgDesc.length > 0? showImgDesc : item.image[0]} alt="" className="work__img__desc" />
+                            {/* <PageTag page={item.image}/> */}
+                            <table>
+                                <tr>
+                                    <td width={'10%'} disabled>&laquo;</td>
+                                    {item.image.map( (x,index) =>{
+                                        return (
+                                            <td width={'10%'} onClick={(e)=>{setShowImgDesc(item.image[index])}}>{index+1}</td>
+                                        )
+                                    } )}
+                                    <td width={'10%'} disabled>&raquo;</td>
+                                </tr>
+                            </table>
+                            <div className="work_desc_detail">
+                                <h3 className="work__title__desc">{item.title}</h3>
+                                <p className="work__title__desc2">{item.desc}</p>
+                            </div>
                         </div>
+
 
                     </>
                 )  :<></>}
@@ -113,37 +128,25 @@ const Desc = ({showDesc,valueDesc}) =>{
 }
 
 const PageTag = ({page}) =>{
-const [showPages,setShowPage] =  useState('')
 
-function createArray() {
-    let aa =""
-    for (let i = 1; i < page; i++) {
-        aa += `<a href="#">${i}</a>`
-    }
-    console.log(aa)
-    console.log("001",page)
-    // setShowPage(aa)
-}
-createArray();
-
-
-return (<>
-    <div className="pageSection">
-    <div className="pagination" dangerouslySetInnerHTML={{__html:showPages}}>
-        {/* <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-        {() =>{
-            return  <a href="#">&raquo;</a>
-        }} */}
-    </div>
-    </div>
-</>)
+    return (<>
+        <div className="pageSection">
+        <div className="pagination" >
+            
+            {/* <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a> */}
+            {page.map( (x,index) =>{
+                return  <a >{index+1}</a>
+            } )}
+        </div>
+        </div>
+    </>)
 }    
 
 const Description = () =>{

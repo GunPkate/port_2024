@@ -7,25 +7,25 @@ const Data = [
     
     {
         id: 1,
-        image: image1,
+        image: image4,
         title: "Fullstack Outsource training",
         category: "Certificates"
     },
     {
         id: 7,
-        image: image2,
+        image: image1,
         title: "AWS Foundation",
         category: "Certificates"
     },
     {
         id: 3,
-        image: image3,
+        image: image2,
         title: "Toeic 240",
         category: "Certificates"
     },
     {
         id: 4,
-        image: image4,
+        image: image3,
         title: "AI on Cloud",
         category: "Certificates"
     },
