@@ -6,7 +6,10 @@ import ScrollDown from "./ScrollDown.jsx"
 
 
 const Home = () => {
-    const data = "Software Developer <br> 1 year and 8 months"
+    const startDate = new Date('Dec 27 2022');
+    const current = new Date()
+    const diff = new Date(current.getTime() - startDate.getTime())
+    const data = `Software Developer <br> ${diff.getUTCFullYear() - 1970} year and ${diff.getMonth() + 5} months`
     return (<>
         <section className="home container" id="home">
             <div className="intro">
