@@ -18,7 +18,7 @@ const Home = () => {
                 <p className="home__name" dangerouslySetInnerHTML={{__html: data}}></p>
                 
                 <HeaderSocials/>
-                <a href="#contact" className="btn" id="">Hire Me</a>
+                <a href="https://drive.google.com/file/d/14HLtp6wOjw0N4uFVc3vsULh99R_thZXT/view?usp=sharing" className="btn" id="">Resume</a>
                 <ScrollDown/>
             </div>
         </section>
